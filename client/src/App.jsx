@@ -1,10 +1,30 @@
+
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
+import MainLayout from './layouts/MainLayout'
+
+import Dashboard from './pages/Dashboard'
+import Inventory from './pages/Inventory'
+import Customers from './pages/Customers'
+import Sales from './pages/Sales'
+import Ledger from './pages/Ledger'
+import Reports from './pages/Reports'
+
 function App() {
   return (
-    <div className="min-h-screen bg-green-50 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-green-700">
-        Welcome to VoiceMunim!
-      </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/ledger" element={<Ledger />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
