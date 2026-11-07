@@ -9,6 +9,7 @@ import Customers from './pages/Customers'
 import Sales from './pages/Sales'
 import Ledger from './pages/Ledger'
 import Reports from './pages/Reports'
+import VoiceAssistant from './pages/VoiceAssistant'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/sales" element={<Sales />} />
           <Route path="/ledger" element={<Ledger />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/voice" element={<VoiceAssistant />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
@@ -29,3 +31,4 @@ function App() {
 }
 
 export default App
+

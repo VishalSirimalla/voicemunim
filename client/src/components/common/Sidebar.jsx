@@ -17,6 +17,7 @@ const menuItems = [
   { name: 'Sales & Billing', icon: ShoppingCart, path: '/sales' },
   { name: 'Udhar Ledger', icon: BookOpen, path: '/ledger' },
   { name: 'Reports', icon: ChartNoAxesCombined, path: '/reports' },
+  { name: 'Voice Assistant', icon: Mic, path: '/voice' },
 ]
 
 export default function Sidebar() {
