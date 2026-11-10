@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const connectDB = require("./config/db");
 const { randomUUID } = require("node:crypto");
 const errorHandler = require("./middleware/errorHandler");
 const authRoutes = require("./modules/auth/authRoutes");
@@ -39,7 +40,18 @@ app.use(
   })
 );
 app.use(express.json({ limit: "1mb" }));
+let dbReady;
 
+app.use(async (req, res, next) => {
+  try {
+    dbReady ||= connectDB();
+    await dbReady;
+    next();
+  } catch (error) {
+    dbReady = null;
+    next(error);
+  }
+});
 // Health check route
 app.get("/", (req, res) => {
   res.status(200).json({
